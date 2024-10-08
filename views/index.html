@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <title>Train Data Viewer</title>
+    <script>
+        async function fetchData() {
+            const response = await fetch('http://localhost:1234/');
+            const data = await response.json();
+            document.getElementById('speed').textContent = data.speed;
+            document.getElementById('notch').textContent = data.notch;
+        }
+        setInterval(fetchData, 1000); // 1秒ごとにデータを取得
+    </script>
+</head>
+<body>
+    <h1>電車の情報</h1>
+    <p>スピード: <span id="speed">0</span> km/h</p>
+    <p>ノッチ: <span id="notch">0</span></p>
+</body>
+</html>
